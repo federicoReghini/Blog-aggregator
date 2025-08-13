@@ -1,10 +1,16 @@
 package cli
 
 import (
+	"context"
 	"errors"
 	"fmt"
-	"github.com/federicoReghini/Blog-aggregator/internal/state"
+	"os"
 	"strings"
+	"time"
+
+	"github.com/federicoReghini/Blog-aggregator/internal/database"
+	"github.com/federicoReghini/Blog-aggregator/internal/state"
+	"github.com/google/uuid"
 )
 
 type Command struct {
@@ -68,9 +74,38 @@ func HandlerLogin(s *state.State, cmd Command) error {
 		return errors.New("Username is required")
 	}
 
+	if _, err := s.Db.GetUser(context.Background(), cmd.Args[0]); err != nil {
+		fmt.Println("User not found, register before log in")
+		os.Exit(1)
+
+	}
+
 	s.Cfg.SetUser(cmd.Args[0])
 
 	fmt.Printf("User %s has beeen set", cmd.Args[0])
+
+	return nil
+}
+
+func Register(s *state.State, cmd Command) error {
+	if len(cmd.Args) == 0 {
+		return errors.New("A name is required")
+	}
+
+	user, err := s.Db.CreateUser(context.Background(), database.CreateUserParams{
+		ID:        int32(uuid.New()[0]),
+		CreatedAt: time.Now(),
+		UpdatedAt: time.Now(),
+		Name:      cmd.Args[0],
+	})
+
+	if err != nil {
+		os.Exit(1)
+	}
+
+	s.Cfg.SetUser(user.Name)
+
+	fmt.Printf("User registered successfully %+v\n", user)
 
 	return nil
 }
