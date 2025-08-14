@@ -3,13 +3,12 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	"os"
-
 	"github.com/federicoReghini/Blog-aggregator/internal/cli"
 	"github.com/federicoReghini/Blog-aggregator/internal/config"
 	"github.com/federicoReghini/Blog-aggregator/internal/database"
 	"github.com/federicoReghini/Blog-aggregator/internal/state"
 	_ "github.com/lib/pq"
+	"os"
 )
 
 func main() {
@@ -18,6 +17,9 @@ func main() {
 
 	cmds.Register("login", cli.HandlerLogin)
 	cmds.Register("register", cli.Register)
+	cmds.Register("reset", cli.Reset)
+	cmds.Register("users", cli.Users)
+	cmds.Register("agg", cli.Agg)
 
 	if len(os.Args) < 2 {
 		fmt.Println("Not enough args, there must be at least 2 args")
