@@ -20,6 +20,12 @@ func main() {
 	cmds.Register("reset", cli.Reset)
 	cmds.Register("users", cli.Users)
 	cmds.Register("agg", cli.Agg)
+	cmds.Register("addfeed", cli.MiddlewareLoggedIn(cli.AddFeed))
+	cmds.Register("feeds", cli.Feeds)
+	cmds.Register("follow", cli.MiddlewareLoggedIn(cli.Follow))
+	cmds.Register("following", cli.MiddlewareLoggedIn(cli.Following))
+	cmds.Register("unfollow", cli.MiddlewareLoggedIn(cli.Unfollow))
+	cmds.Register("browse", cli.Browse)
 
 	if len(os.Args) < 2 {
 		fmt.Println("Not enough args, there must be at least 2 args")
