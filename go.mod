@@ -1,4 +1,4 @@
-module github.com/federicoReghini/Blog-aggregator
+module github.com/federicoReghini/gator
 
 go 1.24.5
 

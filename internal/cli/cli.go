@@ -14,8 +14,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/federicoReghini/Blog-aggregator/internal/database"
-	"github.com/federicoReghini/Blog-aggregator/internal/state"
+	"github.com/federicoReghini/gator/internal/database"
+	"github.com/federicoReghini/gator/internal/state"
 	"github.com/google/uuid"
 )
 

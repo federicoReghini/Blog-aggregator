@@ -1,8 +1,8 @@
 package state
 
 import (
-	config "github.com/federicoReghini/Blog-aggregator/internal/config"
-	"github.com/federicoReghini/Blog-aggregator/internal/database"
+	config "github.com/federicoReghini/gator/internal/config"
+	"github.com/federicoReghini/gator/internal/database"
 )
 
 type State struct {

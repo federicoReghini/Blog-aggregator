@@ -3,10 +3,10 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	"github.com/federicoReghini/Blog-aggregator/internal/cli"
-	"github.com/federicoReghini/Blog-aggregator/internal/config"
-	"github.com/federicoReghini/Blog-aggregator/internal/database"
-	"github.com/federicoReghini/Blog-aggregator/internal/state"
+	"github.com/federicoReghini/gator/internal/cli"
+	"github.com/federicoReghini/gator/internal/config"
+	"github.com/federicoReghini/gator/internal/database"
+	"github.com/federicoReghini/gator/internal/state"
 	_ "github.com/lib/pq"
 	"os"
 )
